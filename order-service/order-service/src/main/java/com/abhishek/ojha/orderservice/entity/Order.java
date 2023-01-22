@@ -1,14 +1,14 @@
 package com.abhishek.ojha.orderservice.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "order")
 public class Order {
 
     @Column(name = "order_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @Column(name = "order_status")
@@ -16,6 +16,12 @@ public class Order {
 
     @Column(name = "order_amount")
     private Long orderAmount;
+
+    @Column(name = "product_name")
+    private String productName;
+
+    @Column(name = "product_quantity")
+    private int quantity;
 
     public String getId() {
         return id;
@@ -39,5 +45,21 @@ public class Order {
 
     public void setOrderAmount(Long orderAmount) {
         this.orderAmount = orderAmount;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
